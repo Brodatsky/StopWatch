@@ -1,5 +1,5 @@
 let startBtn = document.querySelector(".btn-start");
-let stopBtn = document.querySelector(".btn-stop");
+
 let resetBtn = document.querySelector(".btn-reset");
 let clockface = document.getElementById("clockface");
 
@@ -59,4 +59,7 @@ function StartStop() {
   }
 }
 
-startBtn.addEventListener("click", StartStop);
+startBtn.addEventListener("click", () => {
+  StartStop();
+  startBtn.textContent = "stop";
+});
