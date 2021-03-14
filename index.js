@@ -23,6 +23,7 @@ resetBtn.addEventListener("click", () => {
     (h2 = 0),
     (init = 0),
     (readout = "0:00:00.0");
+  startBtn.textContent = "Start";
   clockface.textContent = readout;
 });
 function Tick() {
@@ -66,13 +67,14 @@ function Tick() {
 function StartStop() {
   if (init == 0) {
     init = 1;
+    startBtn.textContent = "Stop";
     Tick();
   } else {
     init = 0;
+    startBtn.textContent = "Start";
   }
 }
 
 startBtn.addEventListener("click", () => {
   StartStop();
-  startBtn.textContent = "stop";
 });
