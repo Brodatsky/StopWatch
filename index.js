@@ -10,11 +10,24 @@ let ms = 0,
   m2 = 0,
   h1 = 0,
   h2 = 0,
-  init = 0;
-
+  init = 0,
+  readout = "0:00:00.0";
+clockface.textContent = readout;
+resetBtn.addEventListener("click", () => {
+  (ms = 0),
+    (s1 = 0),
+    (s2 = 0),
+    (m1 = 0),
+    (m2 = 0),
+    (h1 = 0),
+    (h2 = 0),
+    (init = 0),
+    (readout = "0:00:00.0");
+  clockface.textContent = readout;
+});
 function Tick() {
   if (init == 1) {
-    let readout = h2 + h1 + ":" + m2 + m1 + ":" + s2 + s1 + "." + ms;
+    readout = h2 + h1 + ":" + m2 + m1 + ":" + s2 + s1 + "." + ms;
     clockface.textContent = readout;
     ms++;
     if (ms > 9) {
