@@ -1,5 +1,5 @@
 let startBtn = document.querySelector(".btn-start");
-
+let ul = document.querySelector("list");
 let resetBtn = document.querySelector(".btn-reset");
 let clockface = document.getElementById("clockface");
 
@@ -11,6 +11,7 @@ let ms = 0,
   h1 = 0,
   h2 = 0,
   init = 0,
+  i = 1,
   readout = "0:00:00.0";
 clockface.textContent = readout;
 resetBtn.addEventListener("click", () => {
@@ -22,6 +23,7 @@ resetBtn.addEventListener("click", () => {
     (h1 = 0),
     (h2 = 0),
     (init = 0),
+    (i = 1),
     (readout = "0:00:00.0");
   startBtn.textContent = "Start";
   clockface.textContent = readout;
@@ -71,10 +73,22 @@ function StartStop() {
     Tick();
   } else {
     init = 0;
+    createNewElement();
     startBtn.textContent = "Start";
   }
+}
+
+function createNewElement() {
+  let li = document.createElement("li");
+  let txt = document.createElement("span");
+  // txt.classList.add("text");
+  // const newTodo = input.value;
+  txt.append(i);
+  i++;
+  ul.appendChild(li).append(txt);
 }
 
 startBtn.addEventListener("click", () => {
   StartStop();
 });
+createNewElement();
