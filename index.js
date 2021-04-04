@@ -1,5 +1,5 @@
 let startBtn = document.querySelector(".btn-start");
-let ul = document.querySelector("list");
+let ol = document.getElementById("list");
 let resetBtn = document.querySelector(".btn-reset");
 let clockface = document.getElementById("clockface");
 
@@ -11,9 +11,10 @@ let ms = 0,
   h1 = 0,
   h2 = 0,
   init = 0,
-  i = 1,
   readout = "0:00:00.0";
 clockface.textContent = readout;
+
+// Кнопка ресета
 resetBtn.addEventListener("click", () => {
   (ms = 0),
     (s1 = 0),
@@ -23,11 +24,11 @@ resetBtn.addEventListener("click", () => {
     (h1 = 0),
     (h2 = 0),
     (init = 0),
-    (i = 1),
     (readout = "0:00:00.0");
   startBtn.textContent = "Start";
   clockface.textContent = readout;
 });
+
 function Tick() {
   if (init == 1) {
     readout = h2 + h1 + ":" + m2 + m1 + ":" + s2 + s1 + "." + ms;
@@ -65,6 +66,7 @@ function Tick() {
     }, 100);
   }
 }
+
 //Функция запуска и остановки
 function StartStop() {
   if (init == 0) {
@@ -81,14 +83,12 @@ function StartStop() {
 function createNewElement() {
   let li = document.createElement("li");
   let txt = document.createElement("span");
-  // txt.classList.add("text");
-  // const newTodo = input.value;
-  txt.append(i);
-  i++;
-  ul.appendChild(li).append(txt);
+
+  txt.append(1);
+
+  ol.appendChild(li).append(txt);
 }
 
 startBtn.addEventListener("click", () => {
   StartStop();
 });
-createNewElement();
