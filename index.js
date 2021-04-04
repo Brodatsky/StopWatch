@@ -84,7 +84,7 @@ function createNewElement() {
   let li = document.createElement("li");
   let txt = document.createElement("span");
 
-  txt.append(1);
+  txt.append(readout);
 
   ol.appendChild(li).append(txt);
 }
