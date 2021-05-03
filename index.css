@@ -1,5 +1,9 @@
+.btn {
+  width: 50px;
+}
+
 .btn:hover {
-  color: chartreuse;
+  color: rgb(244, 252, 237);
   background-color: rgb(34, 151, 50);
   border-radius: 3px;
 }

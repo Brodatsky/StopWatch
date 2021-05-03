@@ -2,6 +2,8 @@ let startBtn = document.querySelector(".btn-start");
 let ol = document.getElementById("list");
 let resetBtn = document.querySelector(".btn-reset");
 let clockface = document.getElementById("clockface");
+let clearBtn = document.querySelector(".btn-clear");
+let saveBtn = document.querySelector(".btn-save");
 
 let ms = 0,
   s1 = 0,
@@ -71,12 +73,12 @@ function Tick() {
 function StartStop() {
   if (init == 0) {
     init = 1;
-    startBtn.textContent = "Stop";
+    startBtn.textContent = `Stop`;
     Tick();
   } else {
     init = 0;
+    startBtn.textContent = `Start`;
     createNewElement();
-    startBtn.textContent = "Start";
   }
 }
 
@@ -92,3 +94,20 @@ function createNewElement() {
 startBtn.addEventListener("click", () => {
   StartStop();
 });
+
+saveBtn.addEventListener("click", function () {
+  localStorage.setItem("List", ol.innerHTML);
+});
+
+clearBtn.addEventListener("click", function () {
+  ol.innerHTML = "";
+  localStorage.removeItem("List", ol.innerHTML);
+});
+
+function loadTodo() {
+  if (localStorage.getItem("List")) {
+    ol.innerHTML = localStorage.getItem("List");
+  }
+}
+
+loadTodo();
