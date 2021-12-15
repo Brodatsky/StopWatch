@@ -5,67 +5,70 @@ let clockface = document.getElementById("clockface");
 let clearBtn = document.querySelector(".btn-clear");
 let saveBtn = document.querySelector(".btn-save");
 
-//переменные
-let 
-    s1 = 0,
-    s2 = 0,
-    m1 = 0,
-    m2 = 0,
-    h1 = 0,
-    init = 0,
-    readout = "0:00:00";
+let ms = 0,
+  s1 = 0,
+  s2 = 0,
+  m1 = 0,
+  m2 = 0,
+  h1 = 0,
+  h2 = 0,
+  init = 0,
+  readout = "0:00:00.0";
 clockface.textContent = readout;
 
 // Кнопка ресета
 resetBtn.addEventListener("click", () => {
-    
+  (ms = 0),
     (s1 = 0),
     (s2 = 0),
     (m1 = 0),
     (m2 = 0),
     (h1 = 0),
+    (h2 = 0),
     (init = 0),
-    (readout = "0:00:00");
+    (readout = "0:00:00.0");
   startBtn.textContent = "Start";
   clockface.textContent = readout;
 });
 
-function createNewElement() {
-  let li = document.createElement("li");
-  let txt = document.createElement("span");
-  txt.append(readout);
-  ol.appendChild(li).append(txt);
-}
-
 function Tick() {
-  if (init == 1){
+  if (init == 1) {
+    readout = h2 + h1 + ":" + m2 + m1 + ":" + s2 + s1 + "." + ms;
+    clockface.textContent = readout;
+    ms++;
+    if (ms > 9) {
+      s1++;
+      ms = 0;
+    }
+    if (s1 > 9) {
+      s2++;
+      s1 = 0;
+    }
+    if (s2 > 5) {
+      m1++;
+      s2 = 0;
+    }
+    if (m1 > 9) {
+      m2++;
+      m1 = 0;
+    }
+    if (m2 > 5) {
+      h1++;
+      m2 = 0;
+    }
+    if (h1 > 9) {
+      h2++;
+      m1 = 0;
+    }
     let timerTick = setTimeout(function () {
-      readout =  h1 + ":" + m2 + m1 + ":" + s2 + s1 ;
-      clockface.textContent = readout;
-      s1++
-      if (s1 > 9) {
-        s2++;
-        s1 = 0;
-      }
-      if (s2 > 5) {
-        m1++;
-        s2 = 0;
-      }
-      if (m1 > 9) {
-        m2++;
-        m1 = 0;
-      }
-      if (m2 > 5) {
-        h1++;
-        m2 = 0;
-      }
       Tick();
       if (init == 0) {
         clearTimeout(timerTick);
       }
-    }, 1000);
+    }, 100);
   }
 }
+
 //Функция запуска и остановки
 function StartStop() {
   if (init == 0) {
@@ -79,9 +82,15 @@ function StartStop() {
   }
 }
 
+function createNewElement() {
+  let li = document.createElement("li");
+  let txt = document.createElement("span");
 
+  txt.append(readout);
 
-//методы работы с куки
+  ol.appendChild(li).append(txt);
+}
+
 function setCookie(cname,cvalue,exdays) {
   const d = new Date();
   d.setTime(d.getTime() + (exdays*24*60*60*1000));
@@ -130,3 +139,4 @@ function loadTodo() {
 }
 
 loadTodo();
+console.log(loadTodo);
