@@ -91,9 +91,9 @@ function createNewElement() {
   ol.appendChild(li).append(txt);
 }
 
-function setCookie(cname,cvalue,exdays) {
+function setCookie(cname, cvalue, exdays) {
   const d = new Date();
-  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
   let expires = "expires=" + d.toGMTString();
   document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
@@ -101,10 +101,10 @@ function setCookie(cname,cvalue,exdays) {
 function getCookie(cname) {
   let name = cname + "=";
   let decodedCookie = decodeURIComponent(document.cookie);
-  let ca = decodedCookie.split(';');
-  for(let i = 0; i <ca.length; i++) {
+  let ca = decodedCookie.split(";");
+  for (let i = 0; i < ca.length; i++) {
     let c = ca[i];
-    while (c.charAt(0) == ' ') {
+    while (c.charAt(0) == " ") {
       c = c.substring(1);
     }
     if (c.indexOf(name) == 0) {
@@ -116,8 +116,8 @@ function getCookie(cname) {
 
 function deleteCookie(name) {
   setCookie(name, "", {
-    'max-age': -1
-  })
+    "max-age": -1,
+  });
 }
 
 startBtn.addEventListener("click", () => {
@@ -126,16 +126,16 @@ startBtn.addEventListener("click", () => {
 
 saveBtn.addEventListener("click", function () {
   let listForCookie = ol.innerHTML;
-  setCookie ("List", listForCookie,1)
+  setCookie("List", listForCookie, 1);
 });
 
 clearBtn.addEventListener("click", function () {
   ol.innerHTML = "";
-  deleteCookie("List")
+  deleteCookie("List");
 });
 
 function loadTodo() {
-  ol.innerHTML = getCookie ("List");
+  ol.innerHTML = getCookie("List");
 }
 
 loadTodo();
