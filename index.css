@@ -1,9 +1,28 @@
+body {
+  background: #3b444e;
+  color: white;
+}
+
+.container {
+  /* width: 500px; */
+  margin: 50px auto;
+  text-align: center;
+}
+
 .btn {
-  width: 50px;
+  border-radius: 5px;
+  border: solid 1px white;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 1.2em;
+  padding: 5px 10px;
+  width: 100px;
+  margin: 10px;
+  outline: none;
 }
 
 .btn:hover {
-  color: rgb(244, 252, 237);
-  background-color: rgb(34, 151, 50);
-  border-radius: 3px;
+  color: rgb(255, 255, 255);
+  border: solid 1px rgb(190, 204, 110);
+  background-color: #3b444e;
 }
