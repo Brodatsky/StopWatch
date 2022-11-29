@@ -1,72 +1,82 @@
-let list = document.getElementById("list");
-let clockface = document.getElementById("clockface");
-let Tens = document.getElementById("tens");
-let Seconds = document.getElementById("seconds");
-let startBtn = document.querySelector(".btn-start");
-let resetBtn = document.querySelector(".btn-reset");
-let clearBtn = document.querySelector(".btn-clear");
-let saveBtn = document.querySelector(".btn-save");
-let Interval;
+const list = document.getElementById("list");
+const clockface = document.getElementById("clockface");
+const appMilliseconds = document.getElementById("milliseconds");
+const appSeconds = document.getElementById("seconds");
+const appMinutes = document.getElementById("minutes");
+const startBtn = document.querySelector(".btn-start");
+const resetBtn = document.querySelector(".btn-reset");
+const clearBtn = document.querySelector(".btn-clear");
+const saveBtn = document.querySelector(".btn-save");
 
-let tens = 00,
-  seconds = 00,
-  minutes = 00,
-  init = 0;
-// clockface.textContent = readout;
+// Показания секундомера
+let milliseconds = "00";
+let seconds = "00";
+let minutes = "00";
+let init = 0;
 
-//Функция запуска и остановки
-function StartStop() {
-  if (init == 0) {
+let interval;
+
+// Функция запуска и остановки
+function toStartStop() {
+  if (init === 0) {
     init = 1;
     startBtn.textContent = `Stop`;
-    clearInterval(Interval);
-    Interval = setInterval(startStopwatch, 10);
-  } else {
+    clearInterval(interval);
+    interval = setInterval(startStopwatch, 1);
+  } else if (init === 1) {
     init = 0;
-    clearInterval(Interval);
+    clearInterval(interval);
     startBtn.textContent = `Start`;
     // createNewElement();
   }
 }
 
+// Логика секундомера
 function startStopwatch() {
-  tens++;
-
-  if (tens <= 9) {
-    Tens.innerHTML = "0" + tens;
+  milliseconds++;
+  if (milliseconds <= 9) {
+    appMilliseconds.innerHTML = "0" + milliseconds;
   }
-
-  if (tens > 9) {
-    Tens.innerHTML = tens;
+  if (milliseconds > 9) {
+    appMilliseconds.innerHTML = milliseconds;
   }
-
-  if (tens > 99) {
+  if (milliseconds > 99) {
     seconds++;
-    Seconds.innerHTML = "0" + seconds;
-    tens = 0;
-    Tens.innerHTML = "0" + 0;
+    appSeconds.innerHTML = "0" + seconds;
+    milliseconds = 0;
+    appMilliseconds.innerHTML = "0" + 0;
   }
-
   if (seconds > 9) {
-    Seconds.innerHTML = seconds;
+    appSeconds.innerHTML = seconds;
+  }
+  if (seconds > 59) {
+    minutes++;
+    appMinutes.innerHTML = "0" + minutes;
+    seconds = 0;
+    appSeconds.innerHTML = "0" + 0;
+  }
+  if (minutes > 9) {
+    appMinutes.innerHTML = minutes;
   }
 }
 
+// Кнопка старта
 startBtn.addEventListener("click", () => {
-  StartStop();
+  toStartStop();
 });
 
 // Кнопка ресета
 resetBtn.addEventListener("click", () => {
-  clearInterval(Interval);
-  tens = "00";
+  clearInterval(interval);
+  milliseconds = "00";
   seconds = "00";
   minutes = "00";
   init = 0;
   startBtn.textContent = "Start";
 
-  Tens.innerHTML = tens;
-  Seconds.innerHTML = tens;
+  appMilliseconds.innerHTML = milliseconds;
+  appSeconds.innerHTML = seconds;
+  appMinutes.innerHTML = seconds;
 });
 
 // function createNewElement() {

@@ -23,6 +23,6 @@ body {
 
 .btn:hover {
   color: rgb(255, 255, 255);
-  border: solid 1px rgb(190, 204, 110);
   background-color: #3b444e;
+  transition: all 0.3s ease;
 }
