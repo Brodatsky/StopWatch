@@ -22,7 +22,7 @@ function toStartStop() {
     init = 1;
     startBtn.textContent = `Stop`;
     clearInterval(interval);
-    interval = setInterval(startStopwatch, 1);
+    interval = setInterval(startStopwatch, 10);
   } else if (init === 1) {
     init = 0;
     clearInterval(interval);
