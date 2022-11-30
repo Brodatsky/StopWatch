@@ -87,9 +87,6 @@ body {
 .svg-body_animation-none {
   animation: none;
 }
-/* .svg-path_animation-reset {
-  rotate: 80deg;
-} */
 
 @keyframes rotate {
   0% {

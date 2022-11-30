@@ -25,8 +25,6 @@ function playSVG() {
 }
 function stopSVG() {
   svgBody.classList.remove("svg-body_animation-run");
-  // svgBody.classList.remove("svg-body_animation-none");
-  // svgPath.classList.remove("svg-path_run");
 }
 
 function resetSVG() {
