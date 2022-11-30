@@ -7,6 +7,8 @@ const startBtn = document.querySelector(".btn-start");
 const resetBtn = document.querySelector(".btn-reset");
 const clearBtn = document.querySelector(".btn-clear");
 const saveBtn = document.querySelector(".btn-save");
+const svgBody = document.querySelector(".svg-body");
+const svgPath = document.querySelector(".svg-path");
 
 // Показания секундомера
 let milliseconds = "00";
@@ -16,14 +18,31 @@ let init = 0;
 
 let interval;
 
+function playSVG() {
+  svgBody.classList.add("svg-body_animation-run");
+  svgPath.classList.add("svg-path_run");
+  svgBody.classList.remove("svg-body_animation-none");
+}
+function stopSVG() {
+  svgBody.classList.remove("svg-body_animation-run");
+  // svgBody.classList.remove("svg-body_animation-none");
+  // svgPath.classList.remove("svg-path_run");
+}
+
+function resetSVG() {
+  svgPath.classList.remove("svg-path_run");
+  svgBody.classList.add("svg-body_animation-none");
+}
 // Функция запуска и остановки
 function toStartStop() {
   if (init === 0) {
+    playSVG();
     init = 1;
     startBtn.textContent = `Stop`;
     clearInterval(interval);
     interval = setInterval(startStopwatch, 10);
   } else if (init === 1) {
+    stopSVG();
     init = 0;
     clearInterval(interval);
     startBtn.textContent = `Start`;
@@ -73,6 +92,7 @@ resetBtn.addEventListener("click", () => {
   minutes = "00";
   init = 0;
   startBtn.textContent = "Start";
+  resetSVG();
 
   appMilliseconds.innerHTML = milliseconds;
   appSeconds.innerHTML = seconds;

@@ -1,15 +1,38 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+button:active,
+button::-moz-focus-inner {
+  border: 0;
+  outline: none;
+}
 body {
   background: #3b444e;
   color: white;
 }
 
-#clockface {
-  /* display: flex; */
-  font-size: 30px;
+.clockface {
+  position: relative;
+  font-size: 50px;
 }
 
+.clockface-readout {
+  position: absolute;
+  top: 225px;
+  left: 170px;
+}
 #milliseconds {
-  font-size: 22px;
+  font-size: 0.5em;
 }
 
 .container {
@@ -34,4 +57,45 @@ body {
   color: rgb(255, 255, 255);
   background-color: #3b444e;
   transition: all 0.3s ease;
+}
+.svg-container {
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.svg-body {
+  animation: rotate 1s linear infinite;
+  animation-play-state: paused;
+  rotate: 62deg;
+}
+
+.svg-path {
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 2px;
+  stroke-linecap: round;
+}
+
+.svg-path_run {
+  stroke-dasharray: 70, 5;
+}
+
+.svg-body_animation-run {
+  animation-play-state: running;
+}
+
+.svg-body_animation-none {
+  animation: none;
+}
+/* .svg-path_animation-reset {
+  rotate: 80deg;
+} */
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
