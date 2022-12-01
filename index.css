@@ -1,3 +1,9 @@
+/* @font-face {
+  font-family: "Gilroy";
+  src: url("./NerkoOner.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+} */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -19,6 +25,7 @@ button::-moz-focus-inner {
 body {
   background: #3b444e;
   color: white;
+  font-family: "Nerko One", cursive;
 }
 
 .clockface {
@@ -28,10 +35,10 @@ body {
 
 .clockface-readout {
   position: absolute;
-  top: 225px;
-  left: 170px;
+  top: 220px;
+  left: 155px;
 }
-#milliseconds {
+.milliseconds {
   font-size: 0.5em;
 }
 
@@ -41,11 +48,16 @@ body {
   text-align: center;
 }
 
+.buttons {
+  margin-bottom: 30px;
+}
+
 .btn {
   border-radius: 5px;
   border: solid 1px white;
   text-decoration: none;
   cursor: pointer;
+  font-family: "Nerko One", cursive;
   font-size: 1.2em;
   padding: 5px 10px;
   width: 100px;
@@ -57,6 +69,11 @@ body {
   color: rgb(255, 255, 255);
   background-color: #3b444e;
   transition: all 0.3s ease;
+}
+
+.list li {
+  font-size: 20px;
+  list-style-type: none;
 }
 
 .svg-container {

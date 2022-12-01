@@ -1,8 +1,9 @@
-const list = document.getElementById("list");
+const list = document.querySelector(".list");
 const clockface = document.getElementById("clockface");
-const appMilliseconds = document.getElementById("milliseconds");
-const appSeconds = document.getElementById("seconds");
-const appMinutes = document.getElementById("minutes");
+const clockfaceReadout = document.querySelector(".clockface-readout");
+const appMilliseconds = document.querySelector(".milliseconds");
+const appSeconds = document.querySelector(".seconds");
+const appMinutes = document.querySelector(".minutes");
 const startBtn = document.querySelector(".btn-start");
 const resetBtn = document.querySelector(".btn-reset");
 const clearBtn = document.querySelector(".btn-clear");
@@ -49,7 +50,7 @@ function toStartStop() {
     btnStatus = 0;
     clearInterval(interval);
     startBtn.textContent = `Start`;
-    // createNewElement();
+    createNewTimestamp();
   }
 }
 
@@ -102,14 +103,13 @@ resetBtn.addEventListener("click", () => {
   appMinutes.textContent = seconds;
 });
 
-// function createNewElement() {
-//   let li = document.createElement("li");
-//   let txt = document.createElement("span");
-
-//   txt.append(readout);
-
-//   ol.appendChild(li).append(txt);
-// }
+function createNewTimestamp() {
+  let li = document.createElement("li");
+  let txt = document.createElement("span");
+  txt = clockfaceReadout.cloneNode(true);
+  txt.classList.remove("clockface-readout");
+  list.appendChild(li).append(txt);
+}
 
 // function setCookie(cname, cvalue, exdays) {
 //   const d = new Date();
