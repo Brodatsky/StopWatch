@@ -41,14 +41,14 @@ function toStartStop() {
   if (btnStatus === 0) {
     playSVG();
     btnStatus = 1;
-    startBtn.textContent = `Stop`;
+    startBtn.innerHTML = `Stop`;
     clearInterval(interval);
     interval = setInterval(startStopwatch, 10);
   } else if (btnStatus === 1) {
     stopSVG();
     btnStatus = 0;
     clearInterval(interval);
-    startBtn.textContent = `Start`;
+    startBtn.innerHTML = `Start`;
     // createNewElement();
   }
 }
@@ -57,28 +57,28 @@ function toStartStop() {
 function startStopwatch() {
   milliseconds++;
   if (milliseconds <= 9) {
-    appMilliseconds.textContent = "0" + milliseconds;
+    appMilliseconds.innerHTML = "0" + milliseconds;
   }
   if (milliseconds > 9) {
-    appMilliseconds.textContent = milliseconds;
+    appMilliseconds.innerHTML = milliseconds;
   }
   if (milliseconds > 99) {
     seconds++;
-    appSeconds.textContent = "0" + seconds;
+    appSeconds.innerHTML = "0" + seconds;
     milliseconds = 0;
-    appMilliseconds.textContent = "0" + 0;
+    appMilliseconds.innerHTML = "0" + 0;
   }
   if (seconds > 9) {
-    appSeconds.textContent = seconds;
+    appSeconds.innerHTML = seconds;
   }
   if (seconds > 59) {
     minutes++;
-    appMinutes.textContent = "0" + minutes;
+    appMinutes.innerHTML = "0" + minutes;
     seconds = 0;
-    appSeconds.textContent = "0" + 0;
+    appSeconds.innerHTML = "0" + 0;
   }
   if (minutes > 9) {
-    appMinutes.textContent = minutes;
+    appMinutes.innerHTML = minutes;
   }
 }
 
@@ -94,12 +94,12 @@ resetBtn.addEventListener("click", () => {
   seconds = "00";
   minutes = "00";
   btnStatus = 0;
-  startBtn.textContent = "Start";
+  startBtn.innerHTML = "Start";
   resetSVG();
 
-  appMilliseconds.textContent = milliseconds;
-  appSeconds.textContent = seconds;
-  appMinutes.textContent = seconds;
+  appMilliseconds.innerHTML = milliseconds;
+  appSeconds.innerHTML = seconds;
+  appMinutes.innerHTML = seconds;
 });
 
 // function createNewElement() {
@@ -141,17 +141,17 @@ resetBtn.addEventListener("click", () => {
 // }
 
 // saveBtn.addEventListener("click", function () {
-//   let listForCookie = list.textContent;
+//   let listForCookie = list.innerHTML;
 //   setCookie("List", listForCookie, 1);
 // });
 
 // clearBtn.addEventListener("click", function () {
-//   list.textContent = "";
+//   list.innerHTML = "";
 //   deleteCookie("List");
 // });
 
 // function loadTodo() {
-//   list.textContent = getCookie("List");
+//   list.innerHTML = getCookie("List");
 // }
 
 // loadTodo();
