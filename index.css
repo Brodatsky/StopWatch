@@ -69,6 +69,17 @@ body {
   rotate: 62deg;
 }
 
+.svg-path {
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 2px;
+  stroke-linecap: round;
+}
+
+.svg-path_run {
+  stroke-dasharray: 70, 5;
+}
+
 .svg-body_animation-run {
   animation-play-state: running;
 }
@@ -85,15 +96,4 @@ body {
   100% {
     transform: rotate(360deg);
   }
-}
-
-.svg-path {
-  fill: none;
-  stroke: #ffffff;
-  stroke-width: 2px;
-  stroke-linecap: round;
-}
-
-.svg-path_run {
-  stroke-dasharray: 70, 5;
 }
