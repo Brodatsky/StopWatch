@@ -14,19 +14,15 @@ const svgPath = document.querySelector(".svg-path");
 let milliseconds = "00";
 let seconds = "00";
 let minutes = "00";
+let init = 0;
 
-//Переключатель для кнопки start/stop
-let btnStatus = 0;
-//Переменная для хранения (setInterval) тика секундомера
 let interval;
 
-// Поведение SVG
 function playSVG() {
   svgBody.classList.add("svg-body_animation-run");
   svgPath.classList.add("svg-path_run");
   svgBody.classList.remove("svg-body_animation-none");
 }
-
 function stopSVG() {
   svgBody.classList.remove("svg-body_animation-run");
 }
@@ -35,20 +31,19 @@ function resetSVG() {
   svgPath.classList.remove("svg-path_run");
   svgBody.classList.add("svg-body_animation-none");
 }
-
 // Функция запуска и остановки
 function toStartStop() {
-  if (btnStatus === 0) {
+  if (init === 0) {
     playSVG();
-    btnStatus = 1;
-    startBtn.innerHTML = `Stop`;
+    init = 1;
+    startBtn.textContent = `Stop`;
     clearInterval(interval);
     interval = setInterval(startStopwatch, 10);
-  } else if (btnStatus === 1) {
+  } else if (init === 1) {
     stopSVG();
-    btnStatus = 0;
+    init = 0;
     clearInterval(interval);
-    startBtn.innerHTML = `Start`;
+    startBtn.textContent = `Start`;
     // createNewElement();
   }
 }
@@ -93,8 +88,8 @@ resetBtn.addEventListener("click", () => {
   milliseconds = "00";
   seconds = "00";
   minutes = "00";
-  btnStatus = 0;
-  startBtn.innerHTML = "Start";
+  init = 0;
+  startBtn.textContent = "Start";
   resetSVG();
 
   appMilliseconds.innerHTML = milliseconds;

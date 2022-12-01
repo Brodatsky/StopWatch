@@ -60,12 +60,24 @@ body {
 }
 .svg-container {
   margin: 0 auto;
+  overflow: hidden;
 }
 
 .svg-body {
   animation: rotate 1s linear infinite;
   animation-play-state: paused;
   rotate: 62deg;
+}
+
+.svg-path {
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 2px;
+  stroke-linecap: round;
+}
+
+.svg-path_run {
+  stroke-dasharray: 70, 5;
 }
 
 .svg-body_animation-run {
@@ -83,15 +95,4 @@ body {
   100% {
     transform: rotate(360deg);
   }
-}
-
-.svg-path {
-  fill: none;
-  stroke: #ffffff;
-  stroke-width: 2px;
-  stroke-linecap: round;
-}
-
-.svg-path_run {
-  stroke-dasharray: 70, 5;
 }
