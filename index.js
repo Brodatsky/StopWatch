@@ -14,15 +14,19 @@ const svgPath = document.querySelector(".svg-path");
 let milliseconds = "00";
 let seconds = "00";
 let minutes = "00";
-let init = 0;
 
+//Переключатель для кнопки start/stop
+let btnStatus = 0;
+//Переменная для хранения (setInterval) тика секундомера
 let interval;
 
+// Поведение SVG
 function playSVG() {
   svgBody.classList.add("svg-body_animation-run");
   svgPath.classList.add("svg-path_run");
   svgBody.classList.remove("svg-body_animation-none");
 }
+
 function stopSVG() {
   svgBody.classList.remove("svg-body_animation-run");
 }
@@ -31,17 +35,18 @@ function resetSVG() {
   svgPath.classList.remove("svg-path_run");
   svgBody.classList.add("svg-body_animation-none");
 }
+
 // Функция запуска и остановки
 function toStartStop() {
-  if (init === 0) {
+  if (btnStatus === 0) {
     playSVG();
-    init = 1;
+    btnStatus = 1;
     startBtn.textContent = `Stop`;
     clearInterval(interval);
     interval = setInterval(startStopwatch, 10);
-  } else if (init === 1) {
+  } else if (btnStatus === 1) {
     stopSVG();
-    init = 0;
+    btnStatus = 0;
     clearInterval(interval);
     startBtn.textContent = `Start`;
     // createNewElement();
@@ -52,28 +57,28 @@ function toStartStop() {
 function startStopwatch() {
   milliseconds++;
   if (milliseconds <= 9) {
-    appMilliseconds.innerHTML = "0" + milliseconds;
+    appMilliseconds.textContent = "0" + milliseconds;
   }
   if (milliseconds > 9) {
-    appMilliseconds.innerHTML = milliseconds;
+    appMilliseconds.textContent = milliseconds;
   }
   if (milliseconds > 99) {
     seconds++;
-    appSeconds.innerHTML = "0" + seconds;
+    appSeconds.textContent = "0" + seconds;
     milliseconds = 0;
-    appMilliseconds.innerHTML = "0" + 0;
+    appMilliseconds.textContent = "0" + 0;
   }
   if (seconds > 9) {
-    appSeconds.innerHTML = seconds;
+    appSeconds.textContent = seconds;
   }
   if (seconds > 59) {
     minutes++;
-    appMinutes.innerHTML = "0" + minutes;
+    appMinutes.textContent = "0" + minutes;
     seconds = 0;
-    appSeconds.innerHTML = "0" + 0;
+    appSeconds.textContent = "0" + 0;
   }
   if (minutes > 9) {
-    appMinutes.innerHTML = minutes;
+    appMinutes.textContent = minutes;
   }
 }
 
@@ -88,13 +93,13 @@ resetBtn.addEventListener("click", () => {
   milliseconds = "00";
   seconds = "00";
   minutes = "00";
-  init = 0;
+  btnStatus = 0;
   startBtn.textContent = "Start";
   resetSVG();
 
-  appMilliseconds.innerHTML = milliseconds;
-  appSeconds.innerHTML = seconds;
-  appMinutes.innerHTML = seconds;
+  appMilliseconds.textContent = milliseconds;
+  appSeconds.textContent = seconds;
+  appMinutes.textContent = seconds;
 });
 
 // function createNewElement() {
@@ -136,17 +141,17 @@ resetBtn.addEventListener("click", () => {
 // }
 
 // saveBtn.addEventListener("click", function () {
-//   let listForCookie = list.innerHTML;
+//   let listForCookie = list.textContent;
 //   setCookie("List", listForCookie, 1);
 // });
 
 // clearBtn.addEventListener("click", function () {
-//   list.innerHTML = "";
+//   list.textContent = "";
 //   deleteCookie("List");
 // });
 
 // function loadTodo() {
-//   list.innerHTML = getCookie("List");
+//   list.textContent = getCookie("List");
 // }
 
 // loadTodo();

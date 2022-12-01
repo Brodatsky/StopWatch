@@ -58,15 +58,33 @@ body {
   background-color: #3b444e;
   transition: all 0.3s ease;
 }
+
 .svg-container {
   margin: 0 auto;
-  overflow: hidden;
 }
 
 .svg-body {
   animation: rotate 1s linear infinite;
   animation-play-state: paused;
   rotate: 62deg;
+}
+
+.svg-body_animation-run {
+  animation-play-state: running;
+}
+
+.svg-body_animation-none {
+  animation: none;
+}
+
+/* Анимация поворота */
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .svg-path {
@@ -78,21 +96,4 @@ body {
 
 .svg-path_run {
   stroke-dasharray: 70, 5;
-}
-
-.svg-body_animation-run {
-  animation-play-state: running;
-}
-
-.svg-body_animation-none {
-  animation: none;
-}
-
-@keyframes rotate {
-  0% {
-    transform: rotate(0);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
 }
