@@ -105,10 +105,9 @@ resetBtn.addEventListener("click", () => {
 
 function createNewTimestamp() {
   let li = document.createElement("li");
-  let txt = document.createElement("span");
-  txt = clockfaceReadout.cloneNode(true);
-  txt.classList.remove("clockface-readout");
-  list.appendChild(li).append(txt);
+  li.innerHTML = clockfaceReadout.cloneNode(true).innerHTML;
+  console.log(li);
+  list.appendChild(li);
 }
 
 function setCookie(cname, cvalue, exdays) {
@@ -141,10 +140,9 @@ function deleteCookie(name) {
 }
 
 saveBtn.addEventListener("click", function () {
-  let listForCookie = list.textContent;
+  let listForCookie = list.innerHTML;
   setCookie("List", listForCookie, 1);
-  console.log(listForCookie);
-  console.log(document.cookie);
+  console.log(getCookie("List"));
 });
 
 clearBtn.addEventListener("click", function () {
@@ -157,5 +155,3 @@ function loadTodo() {
 }
 
 loadTodo();
-
-console.log(loadTodo());
