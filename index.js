@@ -144,6 +144,7 @@ saveBtn.addEventListener("click", function () {
   let listForCookie = list.textContent;
   setCookie("List", listForCookie, 1);
   console.log(listForCookie);
+  console.log(document.cookie);
 });
 
 clearBtn.addEventListener("click", function () {
@@ -152,7 +153,9 @@ clearBtn.addEventListener("click", function () {
 });
 
 function loadTodo() {
-  list.textContent = getCookie("List");
+  list.innerHTML = getCookie("List");
 }
 
 loadTodo();
+
+console.log(loadTodo());
