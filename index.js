@@ -54,6 +54,13 @@ function toStartStop() {
   }
 }
 
+function createNewTimestamp() {
+  let li = document.createElement("li");
+  li.innerHTML = clockfaceReadout.cloneNode(true).innerHTML;
+  console.log(li);
+  list.appendChild(li);
+}
+
 // Логика секундомера
 function startStopwatch() {
   milliseconds++;
@@ -103,55 +110,7 @@ resetBtn.addEventListener("click", () => {
   appMinutes.textContent = seconds;
 });
 
-function createNewTimestamp() {
-  let li = document.createElement("li");
-  li.innerHTML = clockfaceReadout.cloneNode(true).innerHTML;
-  console.log(li);
-  list.appendChild(li);
-}
-
-function setCookie(cname, cvalue, exdays) {
-  const d = new Date();
-  d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
-  let expires = "expires=" + d.toGMTString();
-  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-}
-
-function getCookie(cname) {
-  let name = cname + "=";
-  let decodedCookie = decodeURIComponent(document.cookie);
-  let ca = decodedCookie.split(";");
-  for (let i = 0; i < ca.length; i++) {
-    let c = ca[i];
-    while (c.charAt(0) == " ") {
-      c = c.substring(1);
-    }
-    if (c.indexOf(name) == 0) {
-      return c.substring(name.length, c.length);
-    }
-  }
-  return "";
-}
-
-function deleteCookie(name) {
-  setCookie(name, "", {
-    "max-age": -1,
-  });
-}
-
-saveBtn.addEventListener("click", function () {
-  let listForCookie = list.innerHTML;
-  setCookie("List", listForCookie, 1);
-  console.log(getCookie("List"));
-});
-
+// Кнопка Clear
 clearBtn.addEventListener("click", function () {
   list.textContent = "";
-  deleteCookie("List");
 });
-
-function loadTodo() {
-  list.innerHTML = getCookie("List");
-}
-
-loadTodo();
