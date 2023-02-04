@@ -1,9 +1,9 @@
-/* @font-face {
-  font-family: "Gilroy";
-  src: url("./NerkoOner.ttf") format("truetype");
+@font-face {
+  font-family: "Montserrat", sans-serif;
+  src: url("./Montserrat.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
-} */
+}
 * {
   box-sizing: border-box;
   margin: 0;
@@ -25,7 +25,7 @@ button::-moz-focus-inner {
 body {
   background: #3b444e;
   color: white;
-  font-family: "Nerko One", cursive;
+  font-family: "Montserrat", sans-serif;
 }
 
 .clockface {
@@ -57,7 +57,7 @@ body {
   border: solid 1px white;
   text-decoration: none;
   cursor: pointer;
-  font-family: "Nerko One", cursive;
+
   font-size: 1.2em;
   padding: 5px 10px;
   width: 100px;
@@ -95,7 +95,7 @@ body {
 }
 
 .svg-path_run {
-  stroke-dasharray: 70, 5;
+  stroke-dasharray: 4 1 2 3;
 }
 
 .svg-body_animation-run {

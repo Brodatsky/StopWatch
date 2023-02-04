@@ -57,7 +57,6 @@ function toStartStop() {
 function createNewTimestamp() {
   let li = document.createElement("li");
   li.innerHTML = clockfaceReadout.cloneNode(true).innerHTML;
-  console.log(li);
   list.appendChild(li);
 }
 
