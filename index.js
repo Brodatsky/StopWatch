@@ -23,18 +23,19 @@ let interval;
 
 // Поведение SVG
 function playSVG() {
-  svgBody.classList.add("svg-body_animation-run");
-  svgPath.classList.add("svg-path_run");
-  svgBody.classList.remove("svg-body_animation-none");
+  svgPath.classList.add("svg-path_animation-run");
+  svgPath.classList.remove("svg-path_animation-stop");
+  svgPath.classList.remove("svg-path_animation-none");
 }
 
 function stopSVG() {
-  svgBody.classList.remove("svg-body_animation-run");
+  svgPath.classList.remove("svg-path_animation-run");
+  svgPath.classList.add("svg-path_animation-stop");
 }
 
 function resetSVG() {
-  svgPath.classList.remove("svg-path_run");
-  svgBody.classList.add("svg-body_animation-none");
+  svgPath.classList.remove("svg-path_animation-run");
+  svgPath.classList.add("svg-path_animation-none");
 }
 
 // Функция запуска и остановки

@@ -35,7 +35,7 @@ body {
 
 .clockface-readout {
   position: absolute;
-  top: 220px;
+  top: 125px;
   left: 155px;
 }
 .milliseconds {
@@ -82,27 +82,30 @@ body {
 }
 
 .svg-body {
-  animation: rotate 1s linear infinite;
-  animation-play-state: paused;
-  rotate: 62deg;
+  height: 300px;
+  width: 300px;
 }
 
-.svg-path {
+.svg-circle {
   fill: none;
   stroke: #ffffff;
-  stroke-width: 2px;
+  stroke-width: 5px;
+  stroke-linecap: round;
+}
+.svg-path {
+  animation: rotate 1s linear infinite;
+  fill: #ffffff;
   stroke-linecap: round;
 }
 
-.svg-path_run {
-  stroke-dasharray: 4 1 2 3;
-}
-
-.svg-body_animation-run {
+.svg-path_animation-run {
   animation-play-state: running;
 }
+.svg-path_animation-stop {
+  animation-play-state: paused;
+}
 
-.svg-body_animation-none {
+.svg-path_animation-none {
   animation: none;
 }
 
