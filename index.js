@@ -8,7 +8,6 @@ const startBtn = document.querySelector(".btn-start");
 const resetBtn = document.querySelector(".btn-reset");
 const clearBtn = document.querySelector(".btn-clear");
 const saveBtn = document.querySelector(".btn-save");
-const svgBody = document.querySelector(".svg-body");
 const svgPath = document.querySelector(".svg-path");
 
 // Показания секундомера
@@ -23,18 +22,15 @@ let interval;
 
 // Поведение SVG
 function playSVG() {
-  svgPath.classList.add("svg-path_animation-run");
-  svgPath.classList.remove("svg-path_animation-stop");
+  svgPath.classList.toggle("svg-path_animation-stop");
   svgPath.classList.remove("svg-path_animation-none");
 }
 
 function stopSVG() {
-  svgPath.classList.remove("svg-path_animation-run");
-  svgPath.classList.add("svg-path_animation-stop");
+  svgPath.classList.toggle("svg-path_animation-stop");
 }
 
 function resetSVG() {
-  svgPath.classList.remove("svg-path_animation-run");
   svgPath.classList.add("svg-path_animation-none");
 }
 
